@@ -1,0 +1,22 @@
+# Disk DescriptorFile
+version=1
+encoding="windows-1252"
+CID=fffffffe
+parentCID=ffffffff
+createType="twoGbMaxExtentSparse"
+
+# Extent description
+RW 8323072 SPARSE "moose-s001.vmdk"
+RW 8323072 SPARSE "moose-s002.vmdk"
+RW 131072 SPARSE "moose-s003.vmdk"
+
+# The Disk Data Base 
+#DDB
+
+ddb.adapterType = "ide"
+ddb.geometry.cylinders = "16383"
+ddb.geometry.heads = "16"
+ddb.geometry.sectors = "63"
+ddb.longContentID = "bfef419cfabbff18411f4611fffffffe"
+ddb.uuid = "60 00 C2 92 8f d0 b9 4e-24 00 b7 4b 26 3a ea 38"
+ddb.virtualHWVersion = "19"

@@ -1,0 +1,60 @@
+﻿//Copyright © 2022 Contributors of moose-org, This code is licensed under the BSD 3-Clause "New" or "Revised" License.
+using System.Collections.Generic;
+using moose.CPU;
+
+namespace moose.Misc
+{
+    public static class Interrupts
+    {
+        public unsafe class INT
+        {
+            public int IRQ;
+            public delegate*<void> Handler;
+        }
+
+        public static List<INT> INTs;
+
+        public static void Initialize()
+        {
+            INTs = new List<INT>();
+        }
+        public static void EndOfInterrupt(byte irq)
+        {
+#if UseAPIC
+            LocalAPIC.EndOfInterrupt();
+#else
+            PIC.EndOfInterrupt(irq);
+#endif
+        }
+
+        public static void EnableInterrupt(byte irq)
+        {
+#if UseAPIC
+            IOAPIC.SetEntry(irq);
+#else
+            PIC.ClearMask(irq);
+#endif
+        }
+
+        public static unsafe void EnableInterrupt(byte irq, delegate*<void> handler)
+        {
+#if UseAPIC
+            IOAPIC.SetEntry(irq);
+#else
+            PIC.ClearMask(irq);
+#endif
+            INTs.Add(new INT() { IRQ = irq, Handler = handler });
+        }
+
+        public static unsafe void HandleInterrupt(int irq)
+        {
+            for (int i = 0; i < INTs.Count; i++)
+            {
+                if (INTs[i].IRQ == irq)
+                {
+                    INTs[i].Handler();
+                }
+            }
+        }
+    }
+}

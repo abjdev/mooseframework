@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<Foundry>
+<VM>
+<VMId type="string">52 03 aa 1b 27 ae 68 c9-7a 15 c1 1b ee d7 79 18</VMId>
+<ClientMetaData>
+<clientMetaDataAttributes/>
+<HistoryEventList/></ClientMetaData>
+<vmxPathName type="string">moose.vmx</vmxPathName></VM></Foundry>

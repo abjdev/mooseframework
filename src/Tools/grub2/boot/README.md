@@ -1,0 +1,1 @@
+Only **fixed** size, **exFAT** file system vhd (Virtual Hard Disk) files are supported!

@@ -1,0 +1,22 @@
+{
+    "profiles": {
+        "QEMU": {
+            "commandName": "Executable",
+            "executablePath": "cmd.exe",
+            "commandLineArgs": "/c dotnet publish -p:vm=qemu -r win-x64 -c debug Kernel",
+            "workingDirectory": "..\\"
+        },
+        "QEMU NET": {
+            "commandName": "Executable",
+            "executablePath": "cmd.exe",
+            "commandLineArgs": "/c dotnet publish -p:vm=qemutap -r win-x64 -c debug MOOS",
+            "workingDirectory": "..\\"
+        },
+        "VMware": {
+            "commandName": "Executable",
+            "executablePath": "cmd.exe",
+            "commandLineArgs": "/c dotnet publish -p:vm=vmware -r win-x64 -c debug Kernel",
+            "workingDirectory": "..\\"
+        }
+    }
+}
